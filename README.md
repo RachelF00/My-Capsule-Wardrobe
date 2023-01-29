@@ -2,12 +2,12 @@
 
 ## Inspiration
 
-A **capsule wardrobe** is a  is a collection of clothing that is composed of interchangeable items only, 
+A **capsule wardrobe** is a collection of clothing that is composed of interchangeable items only, 
 to maximise the number of outfits that can be created. The aim is to have an outfit suitable for any occasion owning
 excessive items of clothing, which is a widely-accepted concept among *Minimalists*.  
 
 As for capsule wardrobe users, it's common to forget the exact number of thier items or run out of 
-outfiting inspirations. With the help of *My Capsule Wardrobe* app, clothes matching and wardrobe management
+outfitting inspirations. With the help of *My Capsule Wardrobe* app, clothes matching and wardrobe management
 become much easier! 
 
 
