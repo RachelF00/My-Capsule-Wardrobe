@@ -23,11 +23,13 @@ functions:
 
 
 ## User Stories
+- As a user, I want to be able to create a user account.
 - As a user, I want to be able to add an item (a topping, a pants, a coat, etc.) to my wardrobe.
-- As a user, I want to be able to view a collection of my items.
-- As a user, I want to be able to make a matching of items from my wardrobe.
 - As a user, I want to be able to remove an item from my wardrobe.
-- As a user, I want to be able to browse some trendy outfits or items to gain inspirations
+- As a user, I want to be able to create a new collection of my items.
+- As a user, I want to be able to add items to my collections.
+- As a user, I want to be able to make a matching of items from my wardrobe.
+
 
 
 
