@@ -1,6 +1,7 @@
 package model;
 
 import java.util.LinkedList;
+import model.Item;
 
 public class Collection {
     private String collectionName;
