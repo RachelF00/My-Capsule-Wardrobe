@@ -131,20 +131,26 @@ public class UserCollectionTest {
         Collection c1;
         c1 = u1.createCollection("summer wardrobe");
 
-
-
         u1.addtoCollection(i1,c1);
         u1.addtoCollection(i2,c1);
         u1.addtoCollection(i3,c1);
-        u1.removefromCollection(i1,c1);
+        assertTrue(u1.removefromCollection(i1,c1));
+        assertFalse(u1.removefromCollection(i1,c1));
         assertTrue(u1.removefromCollection(i2,c1));
+        assertFalse(u1.removefromCollection(i2,c1));
         assertTrue(u1.removefromCollection(i3,c1));
-
         assertFalse(u1.removefromCollection(i3,c1));
+
+
         assertFalse(u1.removefromCollection(i4,c1));
 
         Collection c2;
         c2 = u1.createCollection("winter wardrobe");
+        assertFalse(u1.removefromCollection(i4,c2));
+
+        u1.addItem(i4);
+        u1.addtoCollection(i1,c2);
+        assertTrue(u1.removefromCollection(i1,c2));
         assertFalse(u1.removefromCollection(i4,c2));
 
 
@@ -187,17 +193,17 @@ public class UserCollectionTest {
         c5 = new Collection("uni wardrobe");
 
         assertTrue(u1.removeCollection(c1));
-        assertTrue(u1.removeCollection(c2));
-        assertTrue(u1.removeCollection(c3));
-        assertTrue(u1.removeCollection(c4));
-
         assertFalse(u1.removeCollection(c1));
+        assertTrue(u1.removeCollection(c2));
         assertFalse(u1.removeCollection(c2));
+        assertTrue(u1.removeCollection(c3));
         assertFalse(u1.removeCollection(c3));
+        assertTrue(u1.removeCollection(c4));
         assertFalse(u1.removeCollection(c4));
-        assertFalse(u1.removeCollection(c4));
-        assertFalse(u1.removeCollection(c5));
 
+        assertFalse(u1.removeCollection(c4));
+
+        assertFalse(u1.removeCollection(c5));
 
 
     }
@@ -216,9 +222,11 @@ public class UserCollectionTest {
         i2 = new Item(2,"shirt1", Item.Category.topping);
         i3 = new Item(3,"jeans2", Item.Category.bottom);
         i4 = new Item(4,"jeans3", Item.Category.bottom);
+
         u1.addItem(i1);
         u1.addItem(i2);
         u1.addItem(i3);
+
         assertTrue(u1.removeItem(i1));
         assertFalse(u1.removeItem(i1));
         assertTrue(u1.removeItem(i2));
