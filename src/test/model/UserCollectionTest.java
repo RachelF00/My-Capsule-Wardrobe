@@ -130,17 +130,23 @@ public class UserCollectionTest {
 
         Collection c1;
         c1 = u1.createCollection("summer wardrobe");
+
+
+
         u1.addtoCollection(i1,c1);
         u1.addtoCollection(i2,c1);
         u1.addtoCollection(i3,c1);
-
-
         u1.removefromCollection(i1,c1);
-        u1.removefromCollection(i2,c1);
-        u1.removefromCollection(i3,c1);
+        assertTrue(u1.removefromCollection(i2,c1));
+        assertTrue(u1.removefromCollection(i3,c1));
 
         assertFalse(u1.removefromCollection(i3,c1));
         assertFalse(u1.removefromCollection(i4,c1));
+
+        Collection c2;
+        c2 = u1.createCollection("winter wardrobe");
+        assertFalse(u1.removefromCollection(i4,c2));
+
 
 
 
@@ -177,7 +183,8 @@ public class UserCollectionTest {
         Collection c4;
         c4 = u1.createCollection("spring wardrobe");
 
-
+        Collection c5;
+        c5 = new Collection("uni wardrobe");
 
         assertTrue(u1.removeCollection(c1));
         assertTrue(u1.removeCollection(c2));
@@ -188,6 +195,9 @@ public class UserCollectionTest {
         assertFalse(u1.removeCollection(c2));
         assertFalse(u1.removeCollection(c3));
         assertFalse(u1.removeCollection(c4));
+        assertFalse(u1.removeCollection(c4));
+        assertFalse(u1.removeCollection(c5));
+
 
 
     }
