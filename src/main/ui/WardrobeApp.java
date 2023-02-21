@@ -6,7 +6,7 @@ package ui;
 // import model.Collection;
 
 import model.Item;
-import model.Collection;
+//import model.Collection;
 import model.UserAccount;
 
 // import java.util.LinkedList;
@@ -26,8 +26,8 @@ public class WardrobeApp {
 
     public void runWardrobe() {
         boolean keepGoing = true;
-        String command = null;
-        String command1 = null;
+        String command;
+        String command1;
 
         init();
         displayMenu();
