@@ -29,6 +29,9 @@ functions:
 - As a user, I want to be able to create a new collection of my items.
 - As a user, I want to be able to add items to my collections.
 - As a user, I want to be able to make a matching of items from my wardrobe.
+- As a user, I want to be able to save my items and collections to file (if I so choose).
+- As a user, I want to be able to load my items and collections from file (if I so choose).
+
 
 
 

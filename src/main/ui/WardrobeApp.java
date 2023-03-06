@@ -1,7 +1,8 @@
-
 package ui;
 
-
+/*
+WardrobeApp Application
+ */
 // import jdk.jfr.Category;
 // import model.Collection;
 
@@ -20,10 +21,13 @@ public class WardrobeApp {
     private Scanner input;
     private int itemID = 0;
 
+    // EFFECTS: runs the teller application
     public WardrobeApp() {
         runWardrobe();
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user input
     public void runWardrobe() {
         boolean keepGoing = true;
         String command;
@@ -63,12 +67,16 @@ public class WardrobeApp {
 
     }
 
+    // MODIFIES: this
+    // EFFECTS: initializes accounts
     private void init() {
         u1 = new UserAccount("Rachel", UserAccount.Gender.female,0);
         input = new Scanner(System.in);
         input.useDelimiter("\n");
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user command
     private void processCommand(String command) {
         if (command.equals("c")) {
             createAccount();
@@ -81,6 +89,7 @@ public class WardrobeApp {
         }
     }
 
+    // EFFECTS: displays menu of operations to user
     private void displayOperation() {
         System.out.println("\nSelect from:");
         System.out.println("\ta -> add an item to my item list");
@@ -89,6 +98,8 @@ public class WardrobeApp {
         System.out.println("\tq -> quit");
     }
 
+    // MODIFIES: this
+    // EFFECTS: processes user operation
     private void processOperation(String command) {
         if (command.equals("a")) {
             addItem();
@@ -105,6 +116,7 @@ public class WardrobeApp {
         }
     }
 
+    // EFFECTS: displays genders for user to select
     private void displayGender() {
         System.out.println("Please input your gender:");
         System.out.println("\t1 -> female");
@@ -112,6 +124,7 @@ public class WardrobeApp {
         System.out.println("\t3 -> X");
     }
 
+    // EFFECTS: displays account information
     private void displayAccount() {
         System.out.println("A new UserAccount was created!");
         System.out.println("Username: " + u2.getName());
@@ -121,6 +134,8 @@ public class WardrobeApp {
         System.out.println("--------------------------- ");
     }
 
+    // MODIFIES: this
+    // EFFECTS: create a new account
     private void createAccount() {
         System.out.println("--------------------------- ");
         System.out.println("Please input your Username: ");
@@ -148,6 +163,7 @@ public class WardrobeApp {
 
     }
 
+    // EFFECTS: for user to log in
     private void logIn() {
         System.out.println("Welcome to Wardrobe App!");
         System.out.println("Please input your UserID: ");
@@ -163,6 +179,8 @@ public class WardrobeApp {
         System.out.println("--------------------------- ");
     }
 
+    // MODIFIES: this
+    // EFFECTS: add an item to a UserAccount's itemList
     private void addItem() {
         System.out.println("Please input the name of the item: ");
         String name = input.nextLine();
@@ -187,6 +205,9 @@ public class WardrobeApp {
         u2.addItem(i1);
     }
 
+    // REQUIRES: the Item which itemID represents already exist in itemList
+    // MODIFIES: this
+    // EFFECTS: remove an Item from a UserAccount's itemList
     private void removeItem() {
         System.out.println("Please input itemID you want to remove:");
         int id = input.nextInt();
@@ -198,6 +219,7 @@ public class WardrobeApp {
         }
     }
 
+    // EFFECTS: display the list of item information
     private void displayItems() {
         System.out.println("-------This is your item list:--------");
         for (int i = 0;i < u2.getItemList().size(); i++) {
@@ -207,6 +229,8 @@ public class WardrobeApp {
         System.out.println("---------------------------------------");
     }
 
+    // MODIFIES: this
+    // EFFECTS: create a new collection
     private void newCollection() {
         System.out.println("Please input the name of your collection:");
         input = new Scanner(System.in);

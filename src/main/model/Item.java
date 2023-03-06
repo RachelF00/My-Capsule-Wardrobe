@@ -1,26 +1,23 @@
 package model;
 
 /*
-Item is a class that represents each single item in useraccounts.
-Each item has a unique integer to identify,
+Item is a class that represents each single item in UserAccount and in Collection.
+Each item has a unique integer to identify (ItemID), a name and a Category.
 */
 
 public class Item {
- //   private int itemID; // a unique integer
-    final int itemID;
- //   private String itemName;
-    final String itemName;
+    final int itemID;          //unique ID
+    final String itemName;    //itemName
 
-    public enum Category {
+    public enum Category {    // Category in enumerate
         topping, bottom, coat, others
     }
 
-//    private Category itemCategory;// 1 for toppings, 2 for bottoms, 3 for coats, 4 for others
     final Category itemCategory;
 
-   // private String purchaseDate; // a six-digit date, e.g. 201806 represents June in 2018
 
-
+    // MODIFIES: this
+    // EFFECTS:  constructor which is used to create a new Item object
     public Item(int itemID,String itemName, Category itemCategory) {
         this.itemID = itemID;
         this.itemName = itemName;
@@ -35,7 +32,6 @@ public class Item {
 
     public String getItemName() {
         return this.itemName;
-
     }
 
     public Category getItemCategory() {
