@@ -6,6 +6,7 @@ WardrobeApp Application
 // import jdk.jfr.Category;
 // import model.Collection;
 
+import model.Collection;
 import model.Item;
 import model.Workroom;
 //import model.Collection;
@@ -155,7 +156,7 @@ public class WardrobeApp {
 
     // MODIFIES: this
     // EFFECTS: create a new account
-
+    @SuppressWarnings("methodlength")
     private void createAccount() {
         System.out.println("--------------------------- ");
         System.out.println("Please input your Username: ");
@@ -250,6 +251,7 @@ public class WardrobeApp {
         try {
             workRoom = jsonReader.read();
             System.out.println("Loaded " + workRoom.getName() + " from " + JSON_STORE);
+
             List<Item> items = workRoom.getItems();
             for (Item t : items) {
                 if (t.getID() > itemID) {
@@ -257,6 +259,9 @@ public class WardrobeApp {
                     itemID += 1;
                 }
             }
+
+            List<Collection> collections = workRoom.getCollections();
+
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
@@ -305,7 +310,12 @@ public class WardrobeApp {
         System.out.println("Please input the name of your collection:");
         input = new Scanner(System.in);
         String s1 = input.nextLine();
-        u1.createCollection(s1);
+
+        Collection c1;
+        c1 = new Collection(s1);
+        u2.createCollection(s1);
+        workRoom.addCollection(c1);
+
         System.out.println("Your collection " + s1 + " is successfully created!");
     }
 

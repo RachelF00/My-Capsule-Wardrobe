@@ -90,7 +90,7 @@ public class UserAccount {
 
     }
 
-    // REQUIRES: Item i already existts in itemList
+    // REQUIRES: Item i already exists in itemList
     // MODIFIES: this
     // EFFECTS: remove an item from itemList
     public boolean  removeItem(Item i) {
