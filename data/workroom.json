@@ -1,0 +1,8 @@
+{
+    "name": "Rachel",
+    "items": [{
+        "itemID": 1,
+        "itemName": "shirt",
+        "itemCategory": "topping"
+    }]
+}
