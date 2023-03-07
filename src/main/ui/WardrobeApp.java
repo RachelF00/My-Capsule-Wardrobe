@@ -7,10 +7,17 @@ WardrobeApp Application
 // import model.Collection;
 
 import model.Item;
+import model.Workroom;
 //import model.Collection;
 import model.UserAccount;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 // import java.util.LinkedList;
+
 import java.util.Scanner;
 
 public class WardrobeApp {
@@ -18,11 +25,17 @@ public class WardrobeApp {
     private UserAccount u2;
     private Item i1;
 
+    private static final String JSON_STORE = "./data/workroom.json";
     private Scanner input;
+    private Workroom workRoom;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
     private int itemID = 0;
 
     // EFFECTS: runs the teller application
-    public WardrobeApp() {
+    public WardrobeApp() throws FileNotFoundException  {
+
         runWardrobe();
     }
 
@@ -95,6 +108,8 @@ public class WardrobeApp {
         System.out.println("\ta -> add an item to my item list");
         System.out.println("\tr -> remove an item to my item list");
         System.out.println("\tc -> create a new collection");
+        System.out.println("\ts -> save work room");
+        System.out.println("\tl -> load work room");
         System.out.println("\tq -> quit");
     }
 
@@ -104,13 +119,17 @@ public class WardrobeApp {
         if (command.equals("a")) {
             addItem();
             itemID += 1;
-            displayItems();
+            //displayItems();
         } else if (command.equals("r")) {
             displayItems();
             removeItem();
             displayItems();
         } else if (command.equals("c")) {
             newCollection();
+        } else if (command.equals("s")) {
+            saveWorkRoom();
+        } else if (command.equals("l")) {
+            loadWorkRoom();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -136,6 +155,7 @@ public class WardrobeApp {
 
     // MODIFIES: this
     // EFFECTS: create a new account
+
     private void createAccount() {
         System.out.println("--------------------------- ");
         System.out.println("Please input your Username: ");
@@ -158,8 +178,14 @@ public class WardrobeApp {
             usergender = UserAccount.Gender.X;
         }
         int userid = 1;
+
         u2 = new UserAccount(username,usergender,userid);
         displayAccount();
+
+        input = new Scanner(System.in);
+        workRoom = new Workroom(username);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
 
     }
 
@@ -201,9 +227,42 @@ public class WardrobeApp {
             c1 = Item.Category.others;
         }
 
+
         i1 = new Item(itemID,name,c1);
         u2.addItem(i1);
+        workRoom.addItem(i1);
     }
+
+    private void saveWorkRoom() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(workRoom);
+            jsonWriter.close();
+            System.out.println("Saved " + workRoom.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadWorkRoom() {
+        try {
+            workRoom = jsonReader.read();
+            System.out.println("Loaded " + workRoom.getName() + " from " + JSON_STORE);
+            List<Item> items = workRoom.getItems();
+            for (Item t : items) {
+                if (t.getID() > itemID) {
+                    itemID = t.getID();
+                    itemID += 1;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
+
 
     // REQUIRES: the Item which itemID represents already exist in itemList
     // MODIFIES: this
@@ -214,7 +273,9 @@ public class WardrobeApp {
         int j;
         for (j = 0;j < u2.getItemList().size();j++) {
             if (u2.getItemList().get(j).getID() == id) {
-                u2.removeItem(u2.getItemList().get(j));
+                Item i = u2.getItemList().get(j);
+                u2.removeItem(i);
+                workRoom.removeItem(i);
             }
         }
     }
@@ -222,12 +283,21 @@ public class WardrobeApp {
     // EFFECTS: display the list of item information
     private void displayItems() {
         System.out.println("-------This is your item list:--------");
-        for (int i = 0;i < u2.getItemList().size(); i++) {
+      /*  for (int i = 0;i < u2.getItemList().size(); i++) {
             System.out.println("ItemID:" + u2.getItemList().get(i).getID() + "," + "ItemName" + ":"
                     + u2.getItemList().get(i).getItemName());
         }
+        */
+        List<Item> items = workRoom.getItems();
+
+        for (Item t : items) {
+            System.out.println("ItemID:" + t.getID() + "," + "ItemName" + ":"
+                    + t.getItemName());
+        }
+
         System.out.println("---------------------------------------");
     }
+
 
     // MODIFIES: this
     // EFFECTS: create a new collection

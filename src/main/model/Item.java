@@ -5,7 +5,10 @@ Item is a class that represents each single item in UserAccount and in Collectio
 Each item has a unique integer to identify (ItemID), a name and a Category.
 */
 
-public class Item {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Item implements Writable {
     final int itemID;          //unique ID
     final String itemName;    //itemName
 
@@ -36,6 +39,15 @@ public class Item {
 
     public Category getItemCategory() {
         return this.itemCategory;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("itemID", itemID);
+        json.put("itemName", itemName);
+        json.put("itemCategory", itemCategory);
+        return json;
     }
 
 

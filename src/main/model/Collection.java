@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.LinkedList;
 /*
 Collection is a class that represents a collection of different items.
@@ -8,7 +11,8 @@ Collection has 4 fields: collectionName in string, num in int, itemList which is
 and a MAX of 4.
  */
 
-public class Collection {
+public class Collection implements Writable {
+
     private String collectionName;
     private int num;
     private LinkedList<Item> itemList;
@@ -67,6 +71,14 @@ public class Collection {
 
     public int getNum() {
         return this.num;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("collectionName", collectionName);
+        json.put("ItemList", itemList);
+        return json;
     }
 
 
