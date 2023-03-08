@@ -11,4 +11,8 @@ public class JsonTest {
         assertEquals(category, i.getItemCategory());
         assertEquals(id,i.getID());
     }
+
+    protected void checkCollection(String name, Collection c) {
+        assertEquals(name, c.getName());
+    }
 }

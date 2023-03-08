@@ -13,13 +13,13 @@
   "items": [
     {
       "itemID": 0,
-      "itemName": "jeans",
-      "itemCategory": "bottom"
+      "itemName": "shirt",
+      "itemCategory": "topping"
     },
     {
       "itemID": 1,
-      "itemName": "shirt",
-      "itemCategory": "topping"
+      "itemName": "coat",
+      "itemCategory": "coat"
     }
   ]
 }

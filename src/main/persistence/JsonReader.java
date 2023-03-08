@@ -63,15 +63,11 @@ public class JsonReader {
     // MODIFIES: wr
     // EFFECTS: parses thingy from JSON object and adds it to workroom
     private void addItem(Workroom wr, JSONObject jsonObject) {
-
-        String itemName = jsonObject.getString("itemName");
         int itemID = jsonObject.getInt("itemID");
-
-        int itemID1 = jsonObject.getInt("itemID");
-        String itemName1 = jsonObject.getString("itemName");
+        String itemName = jsonObject.getString("itemName");
 
         Item.Category category = Item.Category.valueOf(jsonObject.getString("itemCategory"));
-        Item item = new Item(itemID1,itemName1, category);
+        Item item = new Item(itemID,itemName, category);
         wr.addItem(item);
     }
 
@@ -80,11 +76,8 @@ public class JsonReader {
     private void addCollections(Workroom wr, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("collections");
         for (Object json : jsonArray) {
-            JSONObject nextItem = (JSONObject) json;
-
-            addCollection(wr, nextItem);
-
-            addItem(wr, nextItem);
+            JSONObject nextCollection = (JSONObject) json;
+            addCollection(wr, nextCollection);
 
         }
     }
@@ -92,17 +85,9 @@ public class JsonReader {
     // MODIFIES: wr
     // EFFECTS: parses thingy from JSON object and adds it to workroom
     private void addCollection(Workroom wr, JSONObject jsonObject) {
-
         String collectionName = jsonObject.getString("collectionName");
         Collection collection = new Collection(collectionName);
-
-        String colectionName = jsonObject.getString("colectionName");
-        Collection collection1 = new Collection(colectionName);
-
-        wr.addCollection(collection1);
+        wr.addCollection(collection);
     }
-
-
-
 
 }

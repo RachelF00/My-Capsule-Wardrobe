@@ -1,25 +1,19 @@
 {
-    "collections": [
-        {
-            "ItemList": [],
-            "collectionName": "summer"
-        },
-        {
-            "ItemList": [],
-            "collectionName": "winter"
-        }
-    ],
+    "collections": [{
+        "ItemList": [],
+        "collectionName": "summer"
+    }],
     "name": "Rachel",
     "items": [
         {
             "itemID": 0,
-            "itemName": "shirt",
-            "itemCategory": "topping"
+            "itemName": "jeans",
+            "itemCategory": "bottom"
         },
         {
             "itemID": 1,
-            "itemName": "coat",
-            "itemCategory": "coat"
+            "itemName": "shirt",
+            "itemCategory": "topping"
         }
     ]
 }
