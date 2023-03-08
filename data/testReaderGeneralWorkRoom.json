@@ -1,0 +1,25 @@
+{
+  "collections": [
+    {
+      "ItemList": [],
+      "collectionName": "summer"
+    },
+    {
+      "ItemList": [],
+      "collectionName": "winter"
+    }
+  ],
+  "name": "Rachel",
+  "items": [
+    {
+      "itemID": 0,
+      "itemName": "jeans",
+      "itemCategory": "bottom"
+    },
+    {
+      "itemID": 1,
+      "itemName": "shirt",
+      "itemCategory": "topping"
+    }
+  ]
+}

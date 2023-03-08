@@ -1,0 +1,16 @@
+{
+    "collections": [],
+    "name": "Rachel work room",
+    "items": [
+        {
+            "itemID": 0,
+            "itemName": "jeans",
+            "itemCategory": "bottom"
+        },
+        {
+            "itemID": 1,
+            "itemName": "shirt",
+            "itemCategory": "topping"
+        }
+    ]
+}
