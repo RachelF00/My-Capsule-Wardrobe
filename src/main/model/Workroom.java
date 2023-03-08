@@ -17,10 +17,9 @@ public class Workroom implements Writable {
     public Workroom(String name) {
         this.name = name;
         items = new ArrayList<>();
-<<<<<<< HEAD
+
         collections = new ArrayList<>();
-=======
->>>>>>> origin/main
+
     }
 
     public String getName() {
@@ -35,46 +34,38 @@ public class Workroom implements Writable {
         items.remove(item);
     }
 
-<<<<<<< HEAD
     public void addCollection(Collection collection) {
         collections.add(collection);
-=======
-    public void addCollection() {
->>>>>>> origin/main
 
     }
+
 
     public List<Item> getItems() {
         return Collections.unmodifiableList(items);
     }
 
-<<<<<<< HEAD
+
     public List<Collection> getCollections() {
         return Collections.unmodifiableList(collections);
     }
 
-=======
->>>>>>> origin/main
     public int numItems() {
         return items.size();
     }
 
-<<<<<<< HEAD
+
     public int numCollections() {
         return collections.size();
     }
 
-=======
->>>>>>> origin/main
+
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
         json.put("items", itemsToJson());
-<<<<<<< HEAD
         json.put("collections",collectionsToJson());
-=======
->>>>>>> origin/main
+
         return json;
 
     }
@@ -88,7 +79,6 @@ public class Workroom implements Writable {
         return jsonArray;
     }
 
-<<<<<<< HEAD
     private JSONArray collectionsToJson() {
         JSONArray jsonArray = new JSONArray();
 
@@ -98,8 +88,6 @@ public class Workroom implements Writable {
         return jsonArray;
     }
 
-=======
->>>>>>> origin/main
 
 
 

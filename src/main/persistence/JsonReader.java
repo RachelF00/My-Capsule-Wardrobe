@@ -45,10 +45,7 @@ public class JsonReader {
         String name = jsonObject.getString("name");
         Workroom wr = new Workroom(name);
         addItems(wr, jsonObject);
-<<<<<<< HEAD
         addCollections(wr,jsonObject);
-=======
->>>>>>> origin/main
         return wr;
     }
 
@@ -66,16 +63,15 @@ public class JsonReader {
     // MODIFIES: wr
     // EFFECTS: parses thingy from JSON object and adds it to workroom
     private void addItem(Workroom wr, JSONObject jsonObject) {
-<<<<<<< HEAD
+
         String itemName = jsonObject.getString("itemName");
         int itemID = jsonObject.getInt("itemID");
 
-=======
-        int itemID = jsonObject.getInt("itemID");
-        String itemName = jsonObject.getString("itemName");
->>>>>>> origin/main
+        int itemID1 = jsonObject.getInt("itemID");
+        String itemName1 = jsonObject.getString("itemName");
+
         Item.Category category = Item.Category.valueOf(jsonObject.getString("itemCategory"));
-        Item item = new Item(itemID,itemName, category);
+        Item item = new Item(itemID1,itemName1, category);
         wr.addItem(item);
     }
 
@@ -85,25 +81,25 @@ public class JsonReader {
         JSONArray jsonArray = jsonObject.getJSONArray("collections");
         for (Object json : jsonArray) {
             JSONObject nextItem = (JSONObject) json;
-<<<<<<< HEAD
+
             addCollection(wr, nextItem);
-=======
+
             addItem(wr, nextItem);
->>>>>>> origin/main
+
         }
     }
 
     // MODIFIES: wr
     // EFFECTS: parses thingy from JSON object and adds it to workroom
     private void addCollection(Workroom wr, JSONObject jsonObject) {
-<<<<<<< HEAD
+
         String collectionName = jsonObject.getString("collectionName");
         Collection collection = new Collection(collectionName);
-=======
+
         String colectionName = jsonObject.getString("colectionName");
-        Collection collection = new Collection(colectionName);
->>>>>>> origin/main
-        wr.addCollection(collection);
+        Collection collection1 = new Collection(colectionName);
+
+        wr.addCollection(collection1);
     }
 
 
