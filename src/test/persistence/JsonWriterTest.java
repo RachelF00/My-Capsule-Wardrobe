@@ -50,7 +50,7 @@ public class JsonWriterTest extends JsonTest {
         try {
             Workroom wr = new Workroom("Rachel work room");
             wr.addItem(new Item(0,"jeans", Item.Category.bottom));
-            wr.addItem(new Item(1,"shirt", Item.Category.topping));
+            wr.addItem(new Item(1,"shirt", Item.Category.top));
 
             wr.addCollection(new Collection("summer"));
 
@@ -65,7 +65,7 @@ public class JsonWriterTest extends JsonTest {
             List<Item> items = wr.getItems();
             assertEquals(2, items.size());
             checkItem("jeans", Item.Category.bottom,0, items.get(0));
-            checkItem("shirt", Item.Category.topping,1, items.get(1));
+            checkItem("shirt", Item.Category.top,1, items.get(1));
 
             List<Collection> collections = wr.getCollections();
             assertEquals(1,collections.size());

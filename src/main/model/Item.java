@@ -13,7 +13,7 @@ public class Item implements Writable {
     final String itemName;    //itemName
 
     public enum Category {    // Category in enumerate
-        topping, bottom, coat, others
+        top, bottom, coat, others
     }
 
     final Category itemCategory;

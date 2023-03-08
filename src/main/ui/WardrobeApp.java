@@ -216,14 +216,14 @@ public class WardrobeApp {
         System.out.println("Please input the name of the item: ");
         String name = input.nextLine();
         System.out.println("Please input the category of the item: )");
-        System.out.println("\t1 -> topping");
+        System.out.println("\t1 -> top");
         System.out.println("\t2 -> bottom");
         System.out.println("\t3 -> coat");
         System.out.println("\t4 -> others");
         Item.Category c1;
         int cate = input.nextInt();
         if (cate == 1) {
-            c1 = Item.Category.topping;
+            c1 = Item.Category.top;
         } else if (cate == 2) {
             c1 = Item.Category.bottom;
         } else if (cate == 3) {

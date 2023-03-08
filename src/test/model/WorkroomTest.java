@@ -25,7 +25,7 @@ public class WorkroomTest {
     @Test
     public void testaddItem() {
         Item i1;
-        i1 = new Item(0, "shirt", Item.Category.topping);
+        i1 = new Item(0, "shirt", Item.Category.top);
         wr1.addItem(i1);
 
         ArrayList<Item> l1 = new ArrayList<>();
@@ -37,7 +37,7 @@ public class WorkroomTest {
     @Test
     public void testremoveItem() {
         Item i1;
-        i1 = new Item(0, "shirt", Item.Category.topping);
+        i1 = new Item(0, "shirt", Item.Category.top);
         wr1.addItem(i1);
         wr1.removeItem(i1);
 
@@ -58,7 +58,7 @@ public class WorkroomTest {
     @Test
     public void testgetNum() {
         Item i1;
-        i1 = new Item(0, "shirt", Item.Category.topping);
+        i1 = new Item(0, "shirt", Item.Category.top);
         wr1.addItem(i1);
         assertEquals(1,wr1.numItems());
 

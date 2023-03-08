@@ -43,7 +43,7 @@ class JsonReaderTest extends JsonTest {
             assertEquals("Rachel", wr.getName());
             List<Item> items = wr.getItems();
             assertEquals(2, items.size());
-            checkItem("shirt", Item.Category.topping,0, items.get(0));
+            checkItem("shirt", Item.Category.top,0, items.get(0));
             checkItem("coat", Item.Category.coat,1, items.get(1));
 
             List<Collection> collections = wr.getCollections();

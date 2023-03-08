@@ -34,10 +34,10 @@ public class UserCollectionTest {
     public void testaddtoCollection1() {
         Item  i1,i2,i3,i4,i5;
         i1 = new Item(1,"jeans1", Item.Category.bottom);
-        i2 = new Item(2,"shirt1", Item.Category.topping);
+        i2 = new Item(2,"shirt1", Item.Category.top);
         i3 = new Item(3,"jeans2", Item.Category.bottom);
         i4 = new Item(4,"jeans3", Item.Category.bottom);
-        i5 = new Item(5,"tshirt1", Item.Category.topping);
+        i5 = new Item(5,"tshirt1", Item.Category.top);
         u1.addItem(i1);
         u1.addItem(i2);
         u1.addItem(i3);
@@ -61,10 +61,10 @@ public class UserCollectionTest {
     public void testaddtoCollection2() {
         Item  i1,i2,i3,i4,i5;
         i1 = new Item(1,"jeans1", Item.Category.bottom);
-        i2 = new Item(2,"shirt1", Item.Category.topping);
+        i2 = new Item(2,"shirt1", Item.Category.top);
         i3 = new Item(3,"jeans2", Item.Category.bottom);
         i4 = new Item(4,"jeans3", Item.Category.bottom);
-        i5 = new Item(5,"tshirt1", Item.Category.topping);
+        i5 = new Item(5,"tshirt1", Item.Category.top);
         u1.addItem(i1);
         u1.addItem(i2);
         u1.addItem(i3);
@@ -121,7 +121,7 @@ public class UserCollectionTest {
     public void testremovefromCollection2() {
         Item  i1,i2,i3,i4,i5;
         i1 = new Item(1,"jeans1", Item.Category.bottom);
-        i2 = new Item(2,"shirt1", Item.Category.topping);
+        i2 = new Item(2,"shirt1", Item.Category.top);
         i3 = new Item(3,"jeans2", Item.Category.bottom);
         i4 = new Item(4,"jeans3", Item.Category.bottom);
         u1.addItem(i1);
@@ -219,7 +219,7 @@ public class UserCollectionTest {
     public void testremoveItem() {
         Item  i1,i2,i3,i4,i5;
         i1 = new Item(1,"jeans1", Item.Category.bottom);
-        i2 = new Item(2,"shirt1", Item.Category.topping);
+        i2 = new Item(2,"shirt1", Item.Category.top);
         i3 = new Item(3,"jeans2", Item.Category.bottom);
         i4 = new Item(4,"jeans3", Item.Category.bottom);
 
@@ -240,11 +240,11 @@ public class UserCollectionTest {
     public void testisfull() {
         Item  i1,i2,i3,i4,i5,i6;
         i1 = new Item(1,"jeans1", Item.Category.bottom);
-        i2 = new Item(2,"shirt1", Item.Category.topping);
+        i2 = new Item(2,"shirt1", Item.Category.top);
         i3 = new Item(3,"jeans2", Item.Category.bottom);
         i4 = new Item(4,"jeans3", Item.Category.bottom);
-        i5 = new Item(5,"tshirt1", Item.Category.topping);
-        i6 = new Item(6,"shirt2", Item.Category.topping);
+        i5 = new Item(5,"tshirt1", Item.Category.top);
+        i6 = new Item(6,"shirt2", Item.Category.top);
 
         u1.addItem(i1);
         u1.addItem(i2);
@@ -286,7 +286,7 @@ public class UserCollectionTest {
         LinkedList<Item> l1 = new LinkedList<Item>();
 
         Item i1 = new Item(1,"jeans1", Item.Category.bottom);
-        Item i2 = new Item(2,"shirt1", Item.Category.topping);
+        Item i2 = new Item(2,"shirt1", Item.Category.top);
         u1.addItem(i1);
         u1.addItem(i2);
 

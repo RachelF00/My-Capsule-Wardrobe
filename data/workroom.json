@@ -1,22 +1,8 @@
 {
-    "collections": [
-        {
-            "ItemList": [],
-            "collectionName": "summer"
-        },
-        {
-            "ItemList": [],
-            "collectionName": "spring"
-        },
-        {
-            "ItemList": [],
-            "collectionName": "winter"
-        },
-        {
-            "ItemList": [],
-            "collectionName": "fall"
-        }
-    ],
+    "collections": [{
+        "ItemList": [],
+        "collectionName": "summer"
+    }],
     "name": "Rachel",
     "items": [
         {
@@ -26,13 +12,13 @@
         },
         {
             "itemID": 1,
-            "itemName": "shirt",
-            "itemCategory": "topping"
+            "itemName": "scarf",
+            "itemCategory": "others"
         },
         {
             "itemID": 2,
-            "itemName": "ring",
-            "itemCategory": "others"
+            "itemName": "shirt",
+            "itemCategory": "top"
         }
     ]
 }
