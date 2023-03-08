@@ -1,8 +1,18 @@
 {
-    "collections": [{
-        "ItemList": [],
-        "collectionName": "summer"
-    }],
+    "collections": [
+        {
+            "ItemList": [],
+            "collectionName": "summer"
+        },
+        {
+            "ItemList": [],
+            "collectionName": "spring"
+        },
+        {
+            "ItemList": [],
+            "collectionName": "winter"
+        }
+    ],
     "name": "Rachel",
     "items": [
         {

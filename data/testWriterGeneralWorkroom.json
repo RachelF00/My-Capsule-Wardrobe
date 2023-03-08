@@ -1,5 +1,8 @@
 {
-    "collections": [],
+    "collections": [{
+        "ItemList": [],
+        "collectionName": "summer"
+    }],
     "name": "Rachel work room",
     "items": [
         {

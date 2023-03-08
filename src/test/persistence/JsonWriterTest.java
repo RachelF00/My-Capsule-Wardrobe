@@ -1,5 +1,6 @@
 package persistence;
 
+import model.Collection;
 import model.Item;
 import org.junit.jupiter.api.Test;
 
@@ -51,6 +52,8 @@ public class JsonWriterTest extends JsonTest {
             wr.addItem(new Item(0,"jeans", Item.Category.bottom));
             wr.addItem(new Item(1,"shirt", Item.Category.topping));
 
+            wr.addCollection(new Collection("summer"));
+
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralWorkroom.json");
             writer.open();
             writer.write(wr);
@@ -63,6 +66,10 @@ public class JsonWriterTest extends JsonTest {
             assertEquals(2, items.size());
             checkItem("jeans", Item.Category.bottom,0, items.get(0));
             checkItem("shirt", Item.Category.topping,1, items.get(1));
+
+            List<Collection> collections = wr.getCollections();
+            assertEquals(1,collections.size());
+            checkCollection("summer", collections.get(0));
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");
