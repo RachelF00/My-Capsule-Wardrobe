@@ -78,6 +78,7 @@ public class WardrobeApp {
         System.out.println("\tc -> create a new user account");
     //    System.out.println("\tl -> log in your account");
         System.out.println("\tq -> quit");
+    //    System.out.println("\tl -> load work room");
 
     }
 
@@ -98,7 +99,7 @@ public class WardrobeApp {
         } else if (command.equals("l")) {
             logIn();
 
-        }  else {
+        } else {
             System.out.println("Selection not valid...");
         }
     }
@@ -156,7 +157,6 @@ public class WardrobeApp {
 
     // MODIFIES: this
     // EFFECTS: create a new account
-    @SuppressWarnings("methodlength")
     private void createAccount() {
         System.out.println("--------------------------- ");
         System.out.println("Please input your Username: ");
@@ -183,11 +183,15 @@ public class WardrobeApp {
         u2 = new UserAccount(username,usergender,userid);
         displayAccount();
 
+        writename(username);
+    }
+
+    // EFFECTS: write name into workroom
+    private void writename(String name) {
         input = new Scanner(System.in);
-        workRoom = new Workroom(username);
+        workRoom = new Workroom(name);
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
-
     }
 
     // EFFECTS: for user to log in
@@ -234,6 +238,8 @@ public class WardrobeApp {
         workRoom.addItem(i1);
     }
 
+    // MODIFIES: this
+    // EFFECTS: saves workroom to file
     private void saveWorkRoom() {
         try {
             jsonWriter.open();
@@ -318,9 +324,6 @@ public class WardrobeApp {
 
         System.out.println("Your collection " + s1 + " is successfully created!");
     }
-
-
-
 
 
 }

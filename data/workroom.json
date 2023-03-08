@@ -11,6 +11,10 @@
         {
             "ItemList": [],
             "collectionName": "winter"
+        },
+        {
+            "ItemList": [],
+            "collectionName": "fall"
         }
     ],
     "name": "Rachel",
@@ -24,6 +28,11 @@
             "itemID": 1,
             "itemName": "shirt",
             "itemCategory": "topping"
+        },
+        {
+            "itemID": 2,
+            "itemName": "ring",
+            "itemCategory": "others"
         }
     ]
 }
