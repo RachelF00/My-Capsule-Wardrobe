@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "collections": [
         {
             "ItemList": [],
@@ -22,4 +23,12 @@
             "itemCategory": "topping"
         }
     ]
+=======
+    "name": "Rachel",
+    "items": [{
+        "itemID": 1,
+        "itemName": "shirt",
+        "itemCategory": "topping"
+    }]
+>>>>>>> origin/main
 }
