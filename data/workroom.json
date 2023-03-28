@@ -21,6 +21,11 @@
             "itemID": 4,
             "itemName": "bracelet",
             "itemCategory": "others"
+        },
+        {
+            "itemID": 4,
+            "itemName": "t shirt",
+            "itemCategory": "top"
         }
     ]
 }
