@@ -232,7 +232,6 @@ public class WardrobeApp {
             c1 = Item.Category.others;
         }
 
-
         i1 = new Item(itemID,name,c1);
         u2.addItem(i1);
         workRoom.addItem(i1);
@@ -265,7 +264,6 @@ public class WardrobeApp {
                     itemID += 1;
                 }
             }
-
             List<Collection> collections = workRoom.getCollections();
 
         } catch (IOException e) {

@@ -1,3 +1,6 @@
+// Reference: JsonSerializationDemo
+// https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+
 package persistence;
 
 import model.Collection;
@@ -11,6 +14,8 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import org.json.*;
+
+
 
 // Represents a reader that reads workroom from JSON data stored in file
 public class JsonReader {

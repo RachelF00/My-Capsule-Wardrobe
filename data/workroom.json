@@ -1,24 +1,26 @@
 {
-    "collections": [{
-        "ItemList": [],
-        "collectionName": "summer"
-    }],
+    "collections": [],
     "name": "Rachel",
     "items": [
         {
             "itemID": 0,
+            "itemName": "Tshirt",
+            "itemCategory": "top"
+        },
+        {
+            "itemID": 1,
             "itemName": "jeans",
             "itemCategory": "bottom"
         },
         {
-            "itemID": 1,
-            "itemName": "scarf",
-            "itemCategory": "others"
+            "itemID": 3,
+            "itemName": "bra",
+            "itemCategory": "top"
         },
         {
-            "itemID": 2,
-            "itemName": "shirt",
-            "itemCategory": "top"
+            "itemID": 4,
+            "itemName": "bracelet",
+            "itemCategory": "others"
         }
     ]
 }
