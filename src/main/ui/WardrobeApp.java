@@ -79,7 +79,6 @@ public class WardrobeApp {
     //    System.out.println("\tl -> log in your account");
         System.out.println("\tq -> quit");
     //    System.out.println("\tl -> load work room");
-
     }
 
     // MODIFIES: this

@@ -193,6 +193,7 @@ public class GUI {
               //  System.out.println(s);
                 workRoom.addItem(i1);
                 System.out.println("Item added successfully!");
+                JOptionPane.showMessageDialog(j2,"Add Successfully!");
                 j2.dispose();
             }
         }
@@ -216,6 +217,7 @@ public class GUI {
         panel.add(displayButton);
     }
 
+
     public static void display() {
         JFrame j2 = new JFrame("Display Items");
         j2.setSize(350, 220);
@@ -224,6 +226,18 @@ public class GUI {
 
         JPanel panel = new JPanel(new BorderLayout());
 
+        JTable table = displayhelper();
+
+        panel.add(table.getTableHeader(), BorderLayout.NORTH);
+        panel.add(table, BorderLayout.CENTER);
+
+        j2.setContentPane(panel);
+        j2.pack();
+        j2.setLocationRelativeTo(null);
+
+    }
+
+    public static JTable displayhelper() {
         Object[][] columns = {{"","",""},
                 {"","",""},
                 {"","",""},
@@ -242,13 +256,7 @@ public class GUI {
 
         Object[] columnNames = {"Item ID", "Item name", "Category"};
         JTable table = new JTable(columns, columnNames);
-
-        panel.add(table.getTableHeader(), BorderLayout.NORTH);
-        panel.add(table, BorderLayout.CENTER);
-
-        j2.setContentPane(panel);
-        j2.pack();
-        j2.setLocationRelativeTo(null);
+        return table;
 
     }
 
@@ -279,10 +287,9 @@ public class GUI {
             public void actionPerformed(ActionEvent e) {
                 try {
                     workRoom = jsonReader.read();
-                    //System.out.println("Loaded " + workRoom.getName() + " from " + JSON_STORE);
                     java.util.List<Item> items = workRoom.getItems();
                     for (Item t : items) {
-                        if (t.getID() > itemID) {
+                        if (t.getID() >= itemID) {
                             itemID = t.getID();
                             itemID += 1;
                         }
@@ -313,6 +320,7 @@ public class GUI {
                     jsonWriter.close();
                     //System.out.println("Saved " + workRoom.getName() + " to " + JSON_STORE);
                     JOptionPane.showMessageDialog(panel,"Save Successfully!");
+                    System.out.println("Save Successfully!");
                 } catch (FileNotFoundException e2) {
                     System.out.println("Unable to write to file: " + JSON_STORE);
                 }
@@ -320,6 +328,42 @@ public class GUI {
         }
 
         saveButton.addActionListener(new SaveHandler());
+    }
+
+    public static void initialQuit(JPanel panel1) {
+        // Quit Button
+        JButton quitButton = new JButton("quit");
+        quitButton.setBounds(20,80,80,25);
+        panel1.add(quitButton);
+
+        class QuitHandler implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        }
+
+        quitButton.addActionListener(new QuitHandler());
+
+    }
+
+    public static void initialCreate(JPanel panel1) {
+        // Create a Create Account button
+        JButton createAccountButton = new JButton("Create Account");
+        createAccountButton.setBounds(150,80,150,25);
+        panel1.add(createAccountButton);
+
+        class CreateHandler implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createPanel();
+            }
+        }
+    }
+
+    public static void createPanel() {
+
+
     }
 
 
@@ -335,6 +379,8 @@ public class GUI {
         createAccountButton.setBounds(150,80,150,25);
         panel.add(createAccountButton);
     }
+
+
 
 
 }
