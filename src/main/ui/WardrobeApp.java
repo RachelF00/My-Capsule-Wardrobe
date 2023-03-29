@@ -279,10 +279,11 @@ public class WardrobeApp {
         System.out.println("Please input itemID you want to remove:");
         int id = input.nextInt();
         int j;
-        for (j = 0;j < u2.getItemList().size();j++) {
-            if (u2.getItemList().get(j).getID() == id) {
-                Item i = u2.getItemList().get(j);
-                u2.removeItem(i);
+        for (j = 0;j < workRoom.numItems();j++) {
+            if (workRoom.getItems().get(j).getID() == id) {
+          //  if (u2.getItemList().get(j).getID() == id) {
+                Item i = workRoom.getItems().get(j);
+            //    u2.removeItem(i);
                 workRoom.removeItem(i);
             }
         }

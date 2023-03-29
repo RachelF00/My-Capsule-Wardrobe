@@ -16,51 +16,6 @@
             "itemID": 2,
             "itemName": "j2",
             "itemCategory": "bottom"
-        },
-        {
-            "itemID": 3,
-            "itemName": "j3",
-            "itemCategory": "bottom"
-        },
-        {
-            "itemID": 4,
-            "itemName": "j4",
-            "itemCategory": "bottom"
-        },
-        {
-            "itemID": 5,
-            "itemName": "j5",
-            "itemCategory": "bottom"
-        },
-        {
-            "itemID": 6,
-            "itemName": "j6",
-            "itemCategory": "bottom"
-        },
-        {
-            "itemID": 7,
-            "itemName": "j7",
-            "itemCategory": "top"
-        },
-        {
-            "itemID": 8,
-            "itemName": "j8",
-            "itemCategory": "bottom"
-        },
-        {
-            "itemID": 9,
-            "itemName": "a9",
-            "itemCategory": "coat"
-        },
-        {
-            "itemID": 10,
-            "itemName": "a10",
-            "itemCategory": "others"
-        },
-        {
-            "itemID": 11,
-            "itemName": "j1",
-            "itemCategory": "bottom"
         }
     ]
 }

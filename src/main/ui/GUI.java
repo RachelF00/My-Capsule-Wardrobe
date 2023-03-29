@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
-import java.net.URL;
 import javax.swing.ImageIcon;
 
 
@@ -34,33 +33,18 @@ public class GUI {
     static UserAccount.Gender g1;
     static int userid = 1;
     static String username;
-    static URL resource;
 
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("User Panel");
-        frame.setSize(350, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-        /*
-        JLabel bg = new JLabel();
-        ImageIcon icon = new ImageIcon("./data/wardrobe.jpg");
-        bg.setIcon(icon);
-        bg.setBounds(0,0,icon.getIconWidth(),icon.getIconHeight());
-        frame.getContentPane().add(bg);
-
-         */
-
-
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
+        JFrame frame = new JFrame("User Panel");
+        frame.setSize(360, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
         frame.add(panel);
         panel.setLayout(null);
-
-
 
         addItem(panel);
         displayItem(panel);
@@ -210,10 +194,8 @@ public class GUI {
                 String s = item.getText();
                 Item i1 = new Item(itemID,s,c1);
                 itemID += 1;
-              //  System.out.println(s);
                 workRoom.addItem(i1);
                 System.out.println("Item added successfully!");
-                //JOptionPane.showMessageDialog(j2,"Add Successfully!","Add Item",0,);
                 addHelper(j2);
                 j2.dispose();
             }
@@ -228,7 +210,7 @@ public class GUI {
 
         Image image = icon.getImage(); //icon--->Image
 
-        float scale = 0.2f; //
+        float scale = 0.1f; //
 
         int width = Math.round(icon.getIconWidth() * scale); //
 
@@ -239,7 +221,6 @@ public class GUI {
         ImageIcon smallIcon = new ImageIcon(miniIcon);// Image--->icon
         JOptionPane.showMessageDialog(j2,"Add Successfully!","Add Item",0,smallIcon);
 
-        //JOptionPane.showInputDialog(j2, "吃了吗？", "标题", 0, smallIcon, null, "默认值");
     }
 
     public static void displayItem(JPanel panel) {
@@ -283,6 +264,11 @@ public class GUI {
                 {"","",""},
                 {"","",""},
                 {"","",""},
+                {"","",""},
+                {"","",""},
+                {"","",""},
+                {"","",""},
+                {"","",""},
                 {"","",""}
         };
         int i = 0;
@@ -297,7 +283,6 @@ public class GUI {
         Object[] columnNames = {"Item ID", "Item name", "Category"};
         JTable table = new JTable(columns, columnNames);
         return table;
-
     }
 
     public static void quit(JPanel panel) {
@@ -334,7 +319,6 @@ public class GUI {
                             itemID += 1;
                         }
                     }
-                    List<Collection> collections = workRoom.getCollections();
                     JOptionPane.showMessageDialog(panel,"Load Successfully!");
                 } catch (IOException e1) {
                     System.out.println("Unable to read from file: " + JSON_STORE);
@@ -358,7 +342,6 @@ public class GUI {
                     jsonWriter.open();
                     jsonWriter.write(workRoom);
                     jsonWriter.close();
-                    //System.out.println("Saved " + workRoom.getName() + " to " + JSON_STORE);
                     JOptionPane.showMessageDialog(panel,"Save Successfully!");
                     System.out.println("Save Successfully!");
                 } catch (FileNotFoundException e2) {
@@ -369,98 +352,6 @@ public class GUI {
 
         saveButton.addActionListener(new SaveHandler());
     }
-
-    public static void createAccount(JPanel panel) {
-        JButton createButton = new JButton("Create New Account");
-        createButton.setBounds(240,120,120,25);
-
-        panel.add(createButton);
-
-        class CreateHandler implements ActionListener {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame j2 = createHelper1();
-                createHelper2(j2);
-
-
-
-            }
-        }
-    }
-
-    public static JFrame createHelper1() {
-        JFrame j2 = new JFrame("Create Account");
-        j2.setSize(350, 220);
-        j2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        j2.setVisible(true);
-        j2.setLayout(null);
-        return j2;
-    }
-
-    public static void createHelper2(JFrame j2) {
-        JLabel name = new JLabel("Name:");
-  //      JTextField item = new JTextField();
-        JLabel gender = new JLabel("Gender: ");
-        name.setBounds(15, 10, 50, 50);
-        //    item.setBounds(60, 20, 120, 30);
-        gender.setBounds(15, 50, 100, 50);
-        j2.add(name);
-        //   j2.add(item);
-        j2.add(gender);
-    }
-
-
-
-    public static void initialQuit(JPanel panel1) {
-        // Quit Button
-        JButton quitButton = new JButton("quit");
-        quitButton.setBounds(20,80,80,25);
-        panel1.add(quitButton);
-
-        class QuitHandler implements ActionListener {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        }
-
-        quitButton.addActionListener(new QuitHandler());
-
-    }
-
-    public static void initialCreate(JPanel panel1) {
-        // Create a Create Account button
-        JButton createAccountButton = new JButton("Create Account");
-        createAccountButton.setBounds(150,80,150,25);
-        panel1.add(createAccountButton);
-
-        class CreateHandler implements ActionListener {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                createPanel();
-            }
-        }
-    }
-
-    public static void createPanel() {
-
-
-    }
-
-
-    public static void placeComponents(JPanel panel) {
-        panel.setLayout(null);
-        // Create a quit Button
-        JButton quitButton = new JButton("quit");
-        quitButton.setBounds(50,80,80,25);
-        panel.add(quitButton);
-
-        // Create a Create Account button
-        JButton createAccountButton = new JButton("Create Account");
-        createAccountButton.setBounds(150,80,150,25);
-        panel.add(createAccountButton);
-    }
-
 
 
 
