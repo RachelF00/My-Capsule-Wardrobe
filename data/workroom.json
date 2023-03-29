@@ -56,6 +56,11 @@
             "itemID": 10,
             "itemName": "a10",
             "itemCategory": "others"
+        },
+        {
+            "itemID": 11,
+            "itemName": "j1",
+            "itemCategory": "bottom"
         }
     ]
 }
