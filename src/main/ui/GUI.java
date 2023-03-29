@@ -33,6 +33,7 @@ public class GUI {
     static UserAccount.Gender g1;
     static int userid = 1;
     static String username;
+    static UserAccount u1;
 
 
     public static void main(String[] args) {
@@ -52,7 +53,295 @@ public class GUI {
         load(panel);
         save(panel);
 
+        removeItem(panel);
+        showTops(panel);
+        createAccount(panel);
+
+
+
         frame.setVisible(true);
+    }
+
+    public static void createAccount(JPanel panel) {
+        JButton createButton = new JButton("Create New Account");
+        createButton.setBounds(130,200,160,25);
+
+        panel.add(createButton);
+
+        class CreateHandler implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame j2 = createHelper1();
+                createHelper2(j2);
+
+               // JTextField name = new JTextField();
+                //name.setBounds(100,20,100,30);
+
+             //   addFemale(j2);
+             //   addMale(j2);
+             //   addX(j2);
+
+                //j2.add(name);
+                initialQuit(j2);
+
+
+                initialCreate(j2);
+
+
+
+            }
+        }
+
+        createButton.addActionListener(new CreateHandler());
+    }
+
+    public static void addFemale(JFrame j2) {
+        JButton b1 = new JButton("Female");
+        b1.setBounds(10,70,50,50);
+
+        class AddFemale implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                g1 = UserAccount.Gender.female;
+            }
+        }
+
+        b1.addActionListener(new AddFemale());
+        j2.add(b1);
+
+    }
+
+    public static void addMale(JFrame j2) {
+        JButton b1 = new JButton("Male");
+        b1.setBounds(70,70,50,50);
+
+        class AddMale implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                g1 = UserAccount.Gender.male;
+            }
+        }
+
+        b1.addActionListener(new AddMale());
+        j2.add(b1);
+
+    }
+
+    public static void addX(JFrame j2) {
+        JButton b1 = new JButton("X");
+        b1.setBounds(10,70,50,50);
+
+        class AddX implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                g1 = UserAccount.Gender.X;
+            }
+        }
+
+        b1.addActionListener(new AddX());
+        j2.add(b1);
+
+    }
+
+    public static JFrame createHelper1() {
+        JFrame j2 = new JFrame("Create Account");
+        j2.setSize(350, 220);
+        j2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        j2.setVisible(true);
+        j2.setLayout(null);
+        return j2;
+    }
+
+    public static void createHelper2(JFrame j2) {
+        JLabel name = new JLabel("Name:");
+     //   JLabel gender = new JLabel("Gender: ");
+        name.setBounds(15, 10, 80, 50);
+ //       gender.setBounds(15, 50, 80, 50);
+        j2.add(name);
+    //    j2.add(gender);
+    }
+
+    public static void initialQuit(JFrame panel1) {
+        // Quit Button
+        JButton quitButton = new JButton("quit");
+        quitButton.setBounds(180,120,80,25);
+        panel1.add(quitButton);
+
+        class QuitHandler implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        }
+
+        quitButton.addActionListener(new QuitHandler());
+
+    }
+
+    public static void initialCreate(JFrame panel1) {
+        // Create a Create Account button
+        JButton createAccountButton = new JButton("Create Account");
+        createAccountButton.setBounds(50,120,120,25);
+        panel1.add(createAccountButton);
+        JTextField name = new JTextField();
+        name.setBounds(100,20,100,30);
+        panel1.add(name);
+
+        class CreateHandler implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                username = name.getText();
+                createPanel();
+                JOptionPane.showMessageDialog(panel1,"Create Successfully!");
+
+                panel1.dispose();
+            }
+        }
+
+        createAccountButton.addActionListener(new CreateHandler());
+    }
+
+    public static void createPanel() {
+      //  u1 = new UserAccount(username,g1,userid);
+        workRoom = new Workroom(username);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+    public static void showTops(JPanel panel) {
+        // ShowTops Button
+        JButton showButton = new JButton("Show Tops");
+        showButton.setBounds(200,140,120,25);
+        panel.add(showButton);
+
+        class ShowHandler implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                displayTops();
+            }
+        }
+
+        showButton.addActionListener(new ShowHandler());
+
+
+    }
+
+    public static void displayTops() {
+        JFrame j2 = new JFrame("Display Items");
+        j2.setSize(350, 220);
+        j2.setVisible(true);
+        j2.setLayout(null);
+
+        JPanel panel = new JPanel(new BorderLayout());
+
+        JTable table = displayTopHelper();
+
+        panel.add(table.getTableHeader(), BorderLayout.NORTH);
+        panel.add(table, BorderLayout.CENTER);
+
+        j2.setContentPane(panel);
+        j2.pack();
+        j2.setLocationRelativeTo(null);
+
+
+    }
+
+    public static JTable  displayTopHelper() {
+        Object[][] columns = {{"",""},
+                {"",""},
+                {"",""},
+                {"",""}
+        };
+        int i = 0;
+        List<Item> items = workRoom.getItems();
+        for (Item t:items) {
+            if (t.getItemCategory() == Item.Category.top) {
+                columns[i][0] = t.getID();
+                columns[i][1] = t.getItemName();
+                i++;
+            }
+
+        }
+
+        Object[] columnNames = {"Item ID", "Item name"};
+        JTable table = new JTable(columns, columnNames);
+        return table;
+    }
+
+    public static void removeItem(JPanel panel) {
+        //Remove Button
+        JButton removeButton = new JButton("remove item");
+        removeButton.setBounds(50,140,140,25);
+        panel.add(removeButton);
+
+        class NewRemoveFrame implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame j3 = removeHelper1();
+                addId(j3);
+                inputID(j3);
+                back(j3);
+            }
+        }
+
+        removeButton.addActionListener(new NewRemoveFrame());
+    }
+
+
+    public static void inputID(JFrame j2) {
+        JTextField item = new JTextField();
+        item.setBounds(60, 50, 80, 30);
+        j2.add(item);
+        JButton r1 = new JButton("Remove Item");
+        r1.setBounds(40,140,120,30);
+        j2.add(r1);
+
+        class RemoveHandler implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String m = item.getText();
+                int id = Integer.parseInt(m);
+                int j;
+                for (j = 0;j < workRoom.numItems();j++) {
+                    if (workRoom.getItems().get(j).getID() == id) {
+                        Item i = workRoom.getItems().get(j);
+                        workRoom.removeItem(i);
+                    }
+                }
+                JOptionPane.showMessageDialog(j2,"Remove Successfully!");
+                j2.dispose();
+            }
+        }
+
+        r1.addActionListener(new RemoveHandler());
+    }
+
+
+    public static JFrame removeHelper1() {
+        JFrame j2 = new JFrame("Remove Item");
+        j2.setSize(350, 220);
+        j2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        j2.setVisible(true);
+        j2.setLayout(null);
+        return j2;
+    }
+
+    public static void addId(JFrame j2) {
+        JLabel classification = new JLabel("Please input the item ID: ");
+        classification.setBounds(15, 10, 250, 50);
+        j2.add(classification);
     }
 
     public static void addItem(JPanel panel) {
@@ -78,6 +367,8 @@ public class GUI {
         addButton.addActionListener(new NewFrame1());
     }
 
+
+
     public static JFrame addNewHelper1() {
         JFrame j2 = new JFrame("Add Item");
         j2.setSize(350, 220);
@@ -89,13 +380,10 @@ public class GUI {
 
     public static void addName(JFrame j2) {
         JLabel itemname = new JLabel("Name:");
-    //    JTextField item = new JTextField();
         JLabel classification = new JLabel("Category: ");
         itemname.setBounds(15, 10, 50, 50);
-    //    item.setBounds(60, 20, 120, 30);
         classification.setBounds(15, 50, 100, 50);
         j2.add(itemname);
-     //   j2.add(item);
         j2.add(classification);
 
     }
@@ -148,9 +436,7 @@ public class GUI {
     public static void addOthers(JFrame j2) {
 
         JButton b4 = new JButton("others");
-
         b4.setBounds(225, 100, 60, 20);
-
 
         class OtherSelect implements ActionListener {
             @Override
@@ -195,7 +481,6 @@ public class GUI {
                 Item i1 = new Item(itemID,s,c1);
                 itemID += 1;
                 workRoom.addItem(i1);
-                System.out.println("Item added successfully!");
                 addHelper(j2);
                 j2.dispose();
             }
@@ -210,11 +495,10 @@ public class GUI {
 
         Image image = icon.getImage(); //icon--->Image
 
-        float scale = 0.1f; //
+        float scale = 0.05f; //
 
-        int width = Math.round(icon.getIconWidth() * scale); //
-
-        int height = Math.round(icon.getIconHeight() * scale);//
+        int width = Math.round(icon.getIconWidth() * scale);
+        int height = Math.round(icon.getIconHeight() * scale);
 
         Image miniIcon = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 
@@ -343,7 +627,6 @@ public class GUI {
                     jsonWriter.write(workRoom);
                     jsonWriter.close();
                     JOptionPane.showMessageDialog(panel,"Save Successfully!");
-                    System.out.println("Save Successfully!");
                 } catch (FileNotFoundException e2) {
                     System.out.println("Unable to write to file: " + JSON_STORE);
                 }

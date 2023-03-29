@@ -1,20 +1,15 @@
 {
     "collections": [],
-    "name": "Rachel",
+    "name": "Shanny",
     "items": [
         {
             "itemID": 0,
-            "itemName": "j0",
+            "itemName": "b1",
             "itemCategory": "bottom"
         },
         {
             "itemID": 1,
-            "itemName": "j1",
-            "itemCategory": "bottom"
-        },
-        {
-            "itemID": 2,
-            "itemName": "j2",
+            "itemName": "b2",
             "itemCategory": "bottom"
         }
     ]
