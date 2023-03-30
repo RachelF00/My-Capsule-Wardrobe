@@ -33,7 +33,13 @@ functions:
 - As a user, I want to be able to load my items and collections from file (if I so choose).
 
 
+## Instructions for Grader
 
+- You can generate the first required action related to adding Xs to a Y by clicking the remove item button
+- You can generate the second required action related to adding Xs to a Y by clicking show top button
+- You can locate my visual component by successfully adding an item and see the showMessageDialog
+- You can save the state of my application by clicking save data button
+- You can reload the state of my application by clicking load data button
 
 
 

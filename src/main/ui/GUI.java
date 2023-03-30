@@ -1,5 +1,7 @@
 package ui;
 
+// This is the class for app's GUI
+
 import model.Collection;
 import model.Item;
 
@@ -36,6 +38,7 @@ public class GUI {
     static UserAccount u1;
 
 
+    // EFFECTS: provide an entry for app
     public static void main(String[] args) {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
@@ -56,12 +59,10 @@ public class GUI {
         removeItem(panel);
         showTops(panel);
         createAccount(panel);
-
-
-
         frame.setVisible(true);
     }
 
+    // EFFECTS: add a button for creating a new account
     public static void createAccount(JPanel panel) {
         JButton createButton = new JButton("Create New Account");
         createButton.setBounds(130,200,160,25);
@@ -73,76 +74,15 @@ public class GUI {
             public void actionPerformed(ActionEvent e) {
                 JFrame j2 = createHelper1();
                 createHelper2(j2);
-
-               // JTextField name = new JTextField();
-                //name.setBounds(100,20,100,30);
-
-             //   addFemale(j2);
-             //   addMale(j2);
-             //   addX(j2);
-
-                //j2.add(name);
                 initialQuit(j2);
-
-
                 initialCreate(j2);
-
-
-
             }
         }
 
         createButton.addActionListener(new CreateHandler());
     }
 
-    public static void addFemale(JFrame j2) {
-        JButton b1 = new JButton("Female");
-        b1.setBounds(10,70,50,50);
-
-        class AddFemale implements ActionListener {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                g1 = UserAccount.Gender.female;
-            }
-        }
-
-        b1.addActionListener(new AddFemale());
-        j2.add(b1);
-
-    }
-
-    public static void addMale(JFrame j2) {
-        JButton b1 = new JButton("Male");
-        b1.setBounds(70,70,50,50);
-
-        class AddMale implements ActionListener {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                g1 = UserAccount.Gender.male;
-            }
-        }
-
-        b1.addActionListener(new AddMale());
-        j2.add(b1);
-
-    }
-
-    public static void addX(JFrame j2) {
-        JButton b1 = new JButton("X");
-        b1.setBounds(10,70,50,50);
-
-        class AddX implements ActionListener {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                g1 = UserAccount.Gender.X;
-            }
-        }
-
-        b1.addActionListener(new AddX());
-        j2.add(b1);
-
-    }
-
+    // EFFECTS: helper function 1 for creating user account
     public static JFrame createHelper1() {
         JFrame j2 = new JFrame("Create Account");
         j2.setSize(350, 220);
@@ -152,6 +92,7 @@ public class GUI {
         return j2;
     }
 
+    // EFFECTS: helper function 2 for creating user account
     public static void createHelper2(JFrame j2) {
         JLabel name = new JLabel("Name:");
      //   JLabel gender = new JLabel("Gender: ");
@@ -161,6 +102,7 @@ public class GUI {
     //    j2.add(gender);
     }
 
+    // EFFECTS: add a button for quiting
     public static void initialQuit(JFrame panel1) {
         // Quit Button
         JButton quitButton = new JButton("quit");
@@ -178,6 +120,7 @@ public class GUI {
 
     }
 
+    // EFFECTS: add a button in account creating interface
     public static void initialCreate(JFrame panel1) {
         // Create a Create Account button
         JButton createAccountButton = new JButton("Create Account");
@@ -201,24 +144,16 @@ public class GUI {
         createAccountButton.addActionListener(new CreateHandler());
     }
 
+    // EFFECTS: helper function to create a new work room
+    // MODIFIES: workRoom
     public static void createPanel() {
       //  u1 = new UserAccount(username,g1,userid);
         workRoom = new Workroom(username);
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
-
-
-
     }
 
-
-
-
-
-
-
-
-
+    // EFFECTS: add a button for showing all the tops in itemlist
     public static void showTops(JPanel panel) {
         // ShowTops Button
         JButton showButton = new JButton("Show Tops");
@@ -237,6 +172,8 @@ public class GUI {
 
     }
 
+    // EFFECTS: display all the items which are tops
+    // MODIFIES: JFrame
     public static void displayTops() {
         JFrame j2 = new JFrame("Display Items");
         j2.setSize(350, 220);
@@ -244,7 +181,6 @@ public class GUI {
         j2.setLayout(null);
 
         JPanel panel = new JPanel(new BorderLayout());
-
         JTable table = displayTopHelper();
 
         panel.add(table.getTableHeader(), BorderLayout.NORTH);
@@ -253,10 +189,9 @@ public class GUI {
         j2.setContentPane(panel);
         j2.pack();
         j2.setLocationRelativeTo(null);
-
-
     }
 
+    // EFFECTS: return a JTable of all the top items
     public static JTable  displayTopHelper() {
         Object[][] columns = {{"",""},
                 {"",""},
@@ -271,7 +206,6 @@ public class GUI {
                 columns[i][1] = t.getItemName();
                 i++;
             }
-
         }
 
         Object[] columnNames = {"Item ID", "Item name"};
@@ -279,6 +213,7 @@ public class GUI {
         return table;
     }
 
+    // EFFECTS: add a button for removing an item
     public static void removeItem(JPanel panel) {
         //Remove Button
         JButton removeButton = new JButton("remove item");
@@ -298,7 +233,8 @@ public class GUI {
         removeButton.addActionListener(new NewRemoveFrame());
     }
 
-
+    // EFFECTS: add a JTextField to input the ID of the item
+    // MODIFIES: workRoom
     public static void inputID(JFrame j2) {
         JTextField item = new JTextField();
         item.setBounds(60, 50, 80, 30);
@@ -329,6 +265,7 @@ public class GUI {
     }
 
 
+    // EFFECTS: add a new JFrame for removing an item
     public static JFrame removeHelper1() {
         JFrame j2 = new JFrame("Remove Item");
         j2.setSize(350, 220);
@@ -338,12 +275,14 @@ public class GUI {
         return j2;
     }
 
+   // EFFECTS: add a JLabel for prompt
     public static void addId(JFrame j2) {
         JLabel classification = new JLabel("Please input the item ID: ");
         classification.setBounds(15, 10, 250, 50);
         j2.add(classification);
     }
 
+    // EFFECTS: add a button for adding an item
     public static void addItem(JPanel panel) {
         // Add Button
         JButton addButton = new JButton("add item");
@@ -368,7 +307,7 @@ public class GUI {
     }
 
 
-
+    // EFFECTS: helper function 1 to add an item
     public static JFrame addNewHelper1() {
         JFrame j2 = new JFrame("Add Item");
         j2.setSize(350, 220);
@@ -378,6 +317,7 @@ public class GUI {
         return j2;
     }
 
+    // EFFECTS: add JLabels for item name and category
     public static void addName(JFrame j2) {
         JLabel itemname = new JLabel("Name:");
         JLabel classification = new JLabel("Category: ");
@@ -388,6 +328,8 @@ public class GUI {
 
     }
 
+   // EFFECTS: button for top
+    // MODIFIES: c1
     public static void addTop(JFrame j2) {
         JButton b1 = new JButton("top");
         b1.setBounds(15, 100, 45, 20);
@@ -403,6 +345,8 @@ public class GUI {
         j2.add(b1);
     }
 
+    // EFFECTS: button for bottom
+    // MODIFIES: c1
     public static void addBottom(JFrame j2) {
         JButton b2 = new JButton("bottom");
         b2.setBounds(80, 100, 60, 20);
@@ -418,6 +362,8 @@ public class GUI {
 
     }
 
+    // EFFECTS: button for coat
+    // MODIFIES: c1
     public static void addCoat(JFrame j2) {
 
         JButton b3 = new JButton("coat");
@@ -433,6 +379,8 @@ public class GUI {
         j2.add(b3);
     }
 
+    // EFFECTS: button for others
+    // MODIFIES: c1
     public static void addOthers(JFrame j2) {
 
         JButton b4 = new JButton("others");
@@ -449,8 +397,8 @@ public class GUI {
         j2.add(b4);
     }
 
+    // EFFECTS: add a button for going back to the initial interface
     public static void back(JFrame j2) {
-
         JButton back = new JButton("Back");
         back.setBounds(180,140,60,30);
 
@@ -466,6 +414,8 @@ public class GUI {
         j2.add(back);
     }
 
+    // EFFECTS: add a new item
+    // MODIFIES: workRoom
     public static void add(JFrame j2) {
         JTextField item = new JTextField();
         item.setBounds(60, 20, 120, 30);
@@ -490,6 +440,7 @@ public class GUI {
         j2.add(add);
     }
 
+    // EFFECTS: helper function for adding an item
     public static void addHelper(JFrame j2) {
         ImageIcon icon = new ImageIcon("./data/pic.png");
 
@@ -507,6 +458,7 @@ public class GUI {
 
     }
 
+    // EFFECTS: add a display button
     public static void displayItem(JPanel panel) {
         // Display Button
         JButton displayButton = new JButton("display items");
@@ -522,7 +474,7 @@ public class GUI {
         panel.add(displayButton);
     }
 
-
+    // EFFECTS: display all the items in the workRoom
     public static void display() {
         JFrame j2 = new JFrame("Display Items");
         j2.setSize(350, 220);
@@ -542,6 +494,7 @@ public class GUI {
 
     }
 
+    // EFFECTS: helper function for display items
     public static JTable displayhelper() {
         Object[][] columns = {{"","",""},
                 {"","",""},
@@ -569,6 +522,7 @@ public class GUI {
         return table;
     }
 
+    // EFFECTS: add a quit button
     public static void quit(JPanel panel) {
         // Quit Button
         JButton quitButton = new JButton("quit");
@@ -586,6 +540,7 @@ public class GUI {
 
     }
 
+    // EFFECTS: add a button for loading date
     public static void load(JPanel panel) {
         // Load Button
         JButton loadButton = new JButton("load data");
@@ -613,6 +568,7 @@ public class GUI {
         loadButton.addActionListener(new LoadHandler());
     }
 
+    // EFFECTS: add a button for save data
     public static void save(JPanel panel) {
         // Save Button
         JButton saveButton = new JButton("save data");
@@ -634,6 +590,58 @@ public class GUI {
         }
 
         saveButton.addActionListener(new SaveHandler());
+    }
+
+    // EFFECTS: add a button for female
+    public static void addFemale(JFrame j2) {
+        JButton b1 = new JButton("Female");
+        b1.setBounds(10,70,50,50);
+
+        class AddFemale implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                g1 = UserAccount.Gender.female;
+            }
+        }
+
+        b1.addActionListener(new AddFemale());
+        j2.add(b1);
+
+    }
+
+    // EFFECTS: add a button for male
+    public static void addMale(JFrame j2) {
+        JButton b1 = new JButton("Male");
+        b1.setBounds(70,70,50,50);
+
+        class AddMale implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                g1 = UserAccount.Gender.male;
+            }
+        }
+
+        b1.addActionListener(new AddMale());
+        j2.add(b1);
+
+    }
+
+
+    // EFFECTS: add a button for gender X
+    public static void addX(JFrame j2) {
+        JButton b1 = new JButton("X");
+        b1.setBounds(10,70,50,50);
+
+        class AddX implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                g1 = UserAccount.Gender.X;
+            }
+        }
+
+        b1.addActionListener(new AddX());
+        j2.add(b1);
+
     }
 
 
