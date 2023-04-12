@@ -1,16 +1,31 @@
 {
     "collections": [],
-    "name": "Shanny",
+    "name": "Rachel",
     "items": [
         {
             "itemID": 0,
-            "itemName": "b1",
-            "itemCategory": "bottom"
+            "itemName": "shirt1",
+            "itemCategory": "top"
         },
         {
             "itemID": 1,
-            "itemName": "b2",
+            "itemName": "jeans1",
             "itemCategory": "bottom"
+        },
+        {
+            "itemID": 2,
+            "itemName": "Tshirt1",
+            "itemCategory": "top"
+        },
+        {
+            "itemID": 3,
+            "itemName": "jeans2",
+            "itemCategory": "bottom"
+        },
+        {
+            "itemID": 4,
+            "itemName": "ring",
+            "itemCategory": "others"
         }
     ]
 }

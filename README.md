@@ -42,4 +42,35 @@ functions:
 - You can reload the state of my application by clicking load data button
 
 
+## Phase 4: Task 2
+- Event log:
+- Mon Apr 10 14:05:40 PDT 2023
+- User Account Created!
+- Mon Apr 10 14:05:46 PDT 2023
+- An item added!
+- Mon Apr 10 14:05:50 PDT 2023
+- An item added!
+- Mon Apr 10 14:05:57 PDT 2023
+- An item added!
+- Mon Apr 10 14:06:03 PDT 2023
+- An item added!
+- Mon Apr 10 14:06:05 PDT 2023
+- Items displayed!
+- Mon Apr 10 14:06:10 PDT 2023
+- Tops displayed!
+- Mon Apr 10 14:06:18 PDT 2023
+- An item removed!
+- Mon Apr 10 14:06:20 PDT 2023
+- Items displayed!
+
+## Phase 4: Task 3
+One of my potential refactorings is to remove commented out and never used code.
+With my progress in this project, some functions are different from what I originally designed
+and part of the code is never used. To make my code clean and readable, that kind of 
+code should be removed.
+
+Another way of refactoring is to abstract duplicated code into methods 
+(reducing coupling). For example, in Collection, UserAccount and Workroom classes, all of 
+them have similar addItem methods to add a single item. Therefore, I can seperate part of the code 
+and re-organize it to avoid duplication.
 

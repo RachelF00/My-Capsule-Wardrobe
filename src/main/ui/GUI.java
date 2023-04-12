@@ -112,7 +112,9 @@ public class GUI {
         class QuitHandler implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+
+               // System.exit(0);
+                Workroom.close();
             }
         }
 
@@ -164,6 +166,7 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 displayTops();
+                Workroom.displayTops();
             }
         }
 
@@ -505,7 +508,6 @@ public class GUI {
                 {"","",""},
                 {"","",""},
                 {"","",""},
-                {"","",""},
                 {"","",""}
         };
         int i = 0;
@@ -516,8 +518,8 @@ public class GUI {
             columns[i][2] = t.getItemCategory();
             i++;
         }
-
         Object[] columnNames = {"Item ID", "Item name", "Category"};
+        Workroom.displayItems();
         JTable table = new JTable(columns, columnNames);
         return table;
     }
@@ -532,7 +534,9 @@ public class GUI {
         class QuitHandler implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+
+                //System.exit(0);
+                Workroom.close();
             }
         }
 
@@ -623,7 +627,6 @@ public class GUI {
 
         b1.addActionListener(new AddMale());
         j2.add(b1);
-
     }
 
 

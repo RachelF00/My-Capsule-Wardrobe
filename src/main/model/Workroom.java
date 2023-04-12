@@ -22,6 +22,8 @@ public class Workroom implements Writable {
         this.name = name;
         items = new ArrayList<>();
         collections = new ArrayList<>();
+        EventLog.getInstance().logEvent(new Event("User Account Created!"));
+
     }
 
     public String getName() {
@@ -33,12 +35,37 @@ public class Workroom implements Writable {
     // EFFECTS: adds item to this workroom
     public void addItem(Item item) {
         items.add(item);
+        EventLog.getInstance().logEvent(new Event("An item added!"));
     }
 
     // MODIFIES: this
     // EFFECTS: remove item from this workroom
     public void removeItem(Item item) {
         items.remove(item);
+        EventLog.getInstance().logEvent(new Event("An item removed!"));
+
+
+
+    }
+
+    // EFFECTS: close workroom
+    public static void close() {
+        System.out.println("Event log:");
+        for (model.Event event :EventLog.getInstance()) {
+            System.out.println(event);
+        }
+        System.exit(0);
+
+    }
+
+    // EFFECTS: log when display items in workroom
+    public static void displayItems() {
+        EventLog.getInstance().logEvent(new Event("Items displayed!"));
+    }
+
+    // EFFECTS: log when show tops in workroom
+    public static void displayTops() {
+        EventLog.getInstance().logEvent(new Event("Tops showed!"));
     }
 
     // MODIFIES: this
@@ -97,8 +124,5 @@ public class Workroom implements Writable {
         }
         return jsonArray;
     }
-
-
-
 
 }
