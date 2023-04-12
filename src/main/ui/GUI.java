@@ -2,9 +2,7 @@ package ui;
 
 // This is the class for app's GUI
 
-import model.Collection;
 import model.Item;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
